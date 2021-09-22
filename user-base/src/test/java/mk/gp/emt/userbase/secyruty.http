@@ -1,0 +1,19 @@
+### login sucess
+POST http://localhost:9092/api/auth/signin
+Content-Type: application/json
+
+{"username":"markmark204@gmail.com","password":"123123"}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  var jwt=response.body
+  client.global.set("jwt", response.body)
+});
+%}
+
+###
+
+GET http://localhost:9092/api/auth/currentUser
+
+###
